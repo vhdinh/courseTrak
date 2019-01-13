@@ -36,7 +36,7 @@ router.route('/courses/:id').get((req, res) => {
 });
 
 // Course update
-router.route('/courses/update/:id').post((req, res) => {
+router.route('/courses/update/:id').put((req, res) => {
     Course.findById(req.params.id, (err, course) => {
         if (!course)
             return next(new Error('Could not load Course'));
@@ -45,8 +45,8 @@ router.route('/courses/update/:id').post((req, res) => {
             course.description = req.body.description;
             course.professor = req.body.professor;
             course.seat = req.body.seat;
-            course.student = req.body.student;
-            course.status = req.body.status;
+            // course.student = req.body.student;
+            // course.status = req.body.status;
             course.save().then(issue => {
                 res.json('Update done');
             }).catch(err => {

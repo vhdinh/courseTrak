@@ -32,16 +32,16 @@ export class CourseService {
     return this.http.post(`${this.uri}/courses/add`, course);
   }
 
-  updateCourse(id, title, description, professor, seat, student, status) {
+  updateCourse(id, title, description, professor, seat) {
     const course = {
       title: title,
       description: description,
       professor: professor,
       seat: seat,
-      student: student,
-      status: status
+      // student: student,
+      // status: status
     };
-    return this.http.post(`${this.uri}/courses/update/${id}`, course);
+    return this.http.put(`${this.uri}/courses/update/${id}`, course);
   }
 
   deleteCourse(id) {

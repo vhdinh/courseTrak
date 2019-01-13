@@ -1,3 +1,28 @@
-<p>
-  course-edit works!
-</p>
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Update Course</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="updateForm" class="edit-form">
+      <mat-form-field class="field-full-width">
+        <input placeholder="Title" matInput formControlName="title" #title>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <textarea placeholder="Description" matInput formControlName="description" #description></textarea>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input placeholder="Professor" matInput formControlName="professor" #professor>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input placeholder="Seats" matInput formControlName="seat" #seat>
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <br><br>
+      <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
+      <button type="submit" (click)="updateCourse(title.value, description.value, professor.value, seat.value)" [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary">Save</button>
+    </form>
+  </mat-card>
+</div>
