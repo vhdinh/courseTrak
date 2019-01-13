@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CourseService} from '../../../service/course/course.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-course-edit',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseEditComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private courseService: CourseService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }

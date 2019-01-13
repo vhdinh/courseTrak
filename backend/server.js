@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import router from './config/api';
+import api from './config/api';
 
 const app = express();
 
@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 const port = 4000;
 
-app.use('/', router);
+app.use('/', api);
 
 app.listen(port, () => {
     console.log(`EXPRESS SET UP ON ${port}`);

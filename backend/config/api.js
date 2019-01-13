@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 import Course from '../models/Course';
 
 const port = 4000;
