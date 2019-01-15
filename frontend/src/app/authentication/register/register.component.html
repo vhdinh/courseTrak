@@ -1,0 +1,26 @@
+<mat-card class="authentication_card">
+  <mat-card-header>
+    <mat-card-title>Register</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="createForm" class="create-form">
+      <mat-form-field>
+        <input matInput placeholder="First Name" formControlName="firstName" #firstName>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Last Name" formControlName="lastName" #lastName>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email" #email>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" #password>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button type="submit" (click)="register(firstName.value, lastName.value, email.value, password.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Register</button>
+    <button type="submit" mat-raised-button routerLink="/login">Cancel</button>
+  </mat-card-actions>
+</mat-card>

@@ -3,11 +3,18 @@ import { Routes, RouterModule } from '@angular/router';
 import {CourseEditComponent} from './component/courses/course-edit/course-edit.component';
 import {CourseListComponent} from './component/courses/course-list/course-list.component';
 import {CourseCreateComponent} from './component/courses/course-create/course-create.component';
+import {LoginComponent} from './authentication/login/login.component';
+import {RegisterComponent} from './authentication/register/register.component';
 
 const routes: Routes = [
-  { path: 'create', component: CourseCreateComponent },
-  { path: 'edit/:id', component: CourseEditComponent },
-  { path: 'list', component: CourseListComponent },
+  // AUTHENTICATION
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent},
+  // COURSE
+  { path: 'course/create', component: CourseCreateComponent },
+  { path: 'course/edit/:id', component: CourseEditComponent },
+  { path: 'course/list', component: CourseListComponent },
+  { path: 'course', redirectTo: 'course/list', pathMatch: 'full'},
   // { path: '', redirectTo: '/list', pathMatch: 'full'}
 ];
 

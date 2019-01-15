@@ -21,13 +21,18 @@ import { MatToolbarModule,
 import {CourseService} from './service/course/course.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
+import { LoginComponent } from './authentication/login/login.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { RegisterComponent } from './authentication/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CourseListComponent,
     CourseCreateComponent,
-    CourseEditComponent
+    CourseEditComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatTableModule,
     MatDividerModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatMenuModule
   ],
   providers: [CourseService],
   bootstrap: [AppComponent]

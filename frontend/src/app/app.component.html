@@ -1,6 +1,27 @@
 <mat-toolbar>
-  <span>CourseTrak</span>
+  <div>CourseTrak</div>
+  <div>
+    <button id="matMenu" mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/login">
+        <mat-icon>fingerprint</mat-icon>
+        <span>Login / Register</span>
+      </button>
+      <!--<button mat-menu-item disabled>-->
+      <!--<mat-icon>voicemail</mat-icon>-->
+      <!--<span>Check voicemail</span>-->
+      <!--</button>-->
+      <button mat-menu-item routerLink="/course/list">
+        <mat-icon>event_note</mat-icon>
+        <span>Course</span>
+      </button>
+    </mat-menu>
+  </div>
 </mat-toolbar>
+
+
 <div>
   <router-outlet></router-outlet>
 </div>
