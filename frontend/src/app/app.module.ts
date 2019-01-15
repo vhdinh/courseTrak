@@ -24,6 +24,7 @@ import { LoginComponent } from './component/authentication/login/login.component
 import {MatMenuModule} from '@angular/material/menu';
 import { RegisterComponent } from './component/authentication/register/register.component';
 import { CourseAddComponent } from './component/course/course-add/course-add.component';
+import { CourseDetailComponent } from './component/course/course-detail/course-detail.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CourseAddComponent } from './component/course/course-add/course-add.com
     CourseEditComponent,
     LoginComponent,
     RegisterComponent,
-    CourseAddComponent
+    CourseAddComponent,
+    CourseDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -30,6 +30,10 @@ export class CourseListComponent implements OnInit {
       })
   }
 
+  viewCourse(id) {
+    this.router.navigate([`course/${id}`]);
+  }
+
   editCourse(id) {
     this.router.navigate([`course/edit/${id}`]);
   }
