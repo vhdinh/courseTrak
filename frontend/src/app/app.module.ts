@@ -24,6 +24,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './authentication/login/login.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { RegisterComponent } from './authentication/register/register.component';
+import { CourseAddComponent } from './component/course/course-add/course-add.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { RegisterComponent } from './authentication/register/register.component'
     CourseCreateComponent,
     CourseEditComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CourseAddComponent
   ],
   imports: [
     BrowserModule,
