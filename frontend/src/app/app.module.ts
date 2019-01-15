@@ -20,9 +20,9 @@ import { MatToolbarModule,
 import {CourseService} from './service/course/course.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
-import { LoginComponent } from './authentication/login/login.component';
+import { LoginComponent } from './component/authentication/login/login.component';
 import {MatMenuModule} from '@angular/material/menu';
-import { RegisterComponent } from './authentication/register/register.component';
+import { RegisterComponent } from './component/authentication/register/register.component';
 import { CourseAddComponent } from './component/course/course-add/course-add.component';
 
 @NgModule({
