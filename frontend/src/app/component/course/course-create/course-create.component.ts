@@ -32,7 +32,7 @@ export class CourseCreateComponent implements OnInit {
     seat: number) {
     this.courseService.addCourse(title, description, professor, seat, [], 'Open')
       .subscribe(() => {
-      this.router.navigate(['/list']);
+      this.router.navigate(['/course/list']);
       })
   }
 

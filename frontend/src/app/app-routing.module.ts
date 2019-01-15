@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {CourseEditComponent} from './component/courses/course-edit/course-edit.component';
-import {CourseListComponent} from './component/courses/course-list/course-list.component';
-import {CourseCreateComponent} from './component/courses/course-create/course-create.component';
+import {CourseEditComponent} from './component/course/course-edit/course-edit.component';
+import {CourseListComponent} from './component/course/course-list/course-list.component';
+import {CourseCreateComponent} from './component/course/course-create/course-create.component';
 import {LoginComponent} from './authentication/login/login.component';
 import {RegisterComponent} from './authentication/register/register.component';
 

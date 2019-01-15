@@ -4,9 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CourseListComponent } from './component/courses/course-list/course-list.component';
-import { CourseCreateComponent } from './component/courses/course-create/course-create.component';
-import { CourseEditComponent } from './component/courses/course-edit/course-edit.component';
+import { CourseListComponent } from './component/course/course-list/course-list.component';
+import { CourseCreateComponent } from './component/course/course-create/course-create.component';
+import { CourseEditComponent } from './component/course/course-edit/course-edit.component';
 import { MatToolbarModule,
   MatFormFieldModule,
   MatInputModule,

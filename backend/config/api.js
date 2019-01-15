@@ -13,7 +13,7 @@ mongoose.connect('mongodb://localhost/courseTrak', {
 
 
 // Course get all
-router.route('/courses').get((req, res) => {
+router.route('/course').get((req, res) => {
 
     Course.find((err, courses) => {
         if (err) {
@@ -25,7 +25,7 @@ router.route('/courses').get((req, res) => {
 });
 
 // Course get by id
-router.route('/courses/:id').get((req, res) => {
+router.route('/course/:id').get((req, res) => {
     Course.findById(req.params.id, (err, course) => {
         if (err) {
             console.log(err);
@@ -36,7 +36,7 @@ router.route('/courses/:id').get((req, res) => {
 });
 
 // Course update
-router.route('/courses/update/:id').put((req, res) => {
+router.route('/course/update/:id').put((req, res) => {
     Course.findById(req.params.id, (err, course) => {
         if (!course)
             return next(new Error('Could not load Course'));
@@ -57,7 +57,7 @@ router.route('/courses/update/:id').put((req, res) => {
 });
 
 // Course add
-router.route('/courses/add').post((req, res) => {
+router.route('/course/add').post((req, res) => {
     let course = new Course(req.body);
     course.save()
         .then(course => {
@@ -69,7 +69,7 @@ router.route('/courses/add').post((req, res) => {
 });
 
 // delete course
-router.route('/courses/delete/:id').get((req, res) => {
+router.route('/course/delete/:id').get((req, res) => {
     Course.findByIdAndRemove({_id: req.params.id}, (err, course) => {
         if (err)
             res.json(err);

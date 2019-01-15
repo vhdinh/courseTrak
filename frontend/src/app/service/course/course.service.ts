@@ -13,11 +13,11 @@ export class CourseService {
   ) { }
 
   getCourses() {
-    return this.http.get(`${this.uri}/courses`);
+    return this.http.get(`${this.uri}/course`);
   }
 
   getCourseById(id) {
-    return this.http.get(`${this.uri}/courses/${id}`);
+    return this.http.get(`${this.uri}/course/${id}`);
   }
 
   addCourse(title, description, professor, seat, student, status) {
@@ -29,7 +29,7 @@ export class CourseService {
       student: student,
       status: status
     };
-    return this.http.post(`${this.uri}/courses/add`, course);
+    return this.http.post(`${this.uri}/course/add`, course);
   }
 
   updateCourse(id, title, description, professor, seat) {
@@ -41,11 +41,11 @@ export class CourseService {
       // student: student,
       // status: status
     };
-    return this.http.put(`${this.uri}/courses/update/${id}`, course);
+    return this.http.put(`${this.uri}/course/update/${id}`, course);
   }
 
   deleteCourse(id) {
-    return this.http.get(`${this.uri}/courses/delete/${id}`);
+    return this.http.get(`${this.uri}/course/delete/${id}`);
   }
 
 }
