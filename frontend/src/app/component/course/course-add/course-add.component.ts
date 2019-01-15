@@ -21,7 +21,12 @@ export class CourseAddComponent implements OnInit {
       title: ['', Validators.required],
       description: '',
       professor: ['', Validators.required],
-      seat: ['', Validators.required]
+      seat: ['', [
+        Validators.required,
+        Validators.pattern('^[0-9]*$'),
+        Validators.min(0),
+        Validators.max(50)
+      ]]
     })
   }
 

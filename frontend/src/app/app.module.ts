@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CourseListComponent } from './component/course/course-list/course-list.component';
-import { CourseCreateComponent } from './component/course/course-create/course-create.component';
 import { CourseEditComponent } from './component/course/course-edit/course-edit.component';
 import { MatToolbarModule,
   MatFormFieldModule,
@@ -30,7 +29,6 @@ import { CourseAddComponent } from './component/course/course-add/course-add.com
   declarations: [
     AppComponent,
     CourseListComponent,
-    CourseCreateComponent,
     CourseEditComponent,
     LoginComponent,
     RegisterComponent,
