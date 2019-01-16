@@ -2,6 +2,8 @@ import express from 'express';
 const router = express.Router();
 import mongoose from 'mongoose';
 import Course from '../models/Course';
+import User from '../models/User';
+import bcrypt from 'bcrypt';
 
 const port = 4000;
 
@@ -77,6 +79,64 @@ router.route('/course/delete/:id').get((req, res) => {
             res.json('Removed successfully');
     });
 });
+
+// User get all
+router.route('/user').get((req, res) => {
+    User.find((err, users) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(users);
+        };
+    });
+});
+
+// User add
+router.route('/user/add').post((req, res) => {
+    exist = User.findOne({email: req.body.email}, function(err, user){
+        if(err){
+            return console.log(err)
+        }
+        else{
+            if(user){
+                return res.json({'alert': 'Username already in the system'})
+            }
+            else{
+                var new_user = new User({
+                    email: req.body.email,
+                    password: req.body.password,
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    role: []
+                })
+                new_user.save().then(user => {
+                        res.status(200).json({'user': 'Added successfully'});
+                    }).catch(err => {
+                        res.status(400).send('Failed to create new user');
+                    });
+            }
+        }
+    })
+});
+
+router.route('/login').post((req, res) => {
+    User.find({email: req.body.email}, function(err, result){
+        if(result[0] === undefined || result[0].length == 0 || result[0].email === undefined){
+            console.log("LOGIN RESULT - ", result[0])
+            res.json({'alert': "Unable to find email"});
+        }
+        else{
+            bcrypt.compare(req.body.password, result[0].password, function(err, isMatch){
+                if(isMatch == false){
+                    res.json({'alert': 'Incorrect password'})
+                }
+                else{
+                    res.json(result)
+                }
+            })
+        }
+    });
+})
 
 
 export default router;

@@ -25,6 +25,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { RegisterComponent } from './component/authentication/register/register.component';
 import { CourseAddComponent } from './component/course/course-add/course-add.component';
 import { CourseDetailComponent } from './component/course/course-detail/course-detail.component';
+import {AuthenticationService} from './service/authentication/authentication.service';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,7 @@ import { CourseDetailComponent } from './component/course/course-detail/course-d
     ReactiveFormsModule,
     MatMenuModule
   ],
-  providers: [CourseService],
+  providers: [CourseService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
