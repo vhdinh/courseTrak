@@ -49,7 +49,7 @@ router.route('/course/update/:id').put((req, res) => {
             course.seat = req.body.seat;
             // course.student = req.body.student;
             // course.status = req.body.status;
-            course.save().then(issue => {
+            course.save().then(updatedCourse => {
                 res.json('Update done');
             }).catch(err => {
                 res.status(400).send('Update failed');
@@ -117,6 +117,25 @@ router.route('/user/add').post((req, res) => {
             }
         }
     })
+});
+
+// User update
+router.route('/user/update/:id').put((req, res) => {
+    User.findById(req.params.id, (err, user) => {
+        if (!user)
+            return next(new Error('Could not load user'));
+        else {
+            user.password = req.body.password;
+            user.firstName = req.body.firstName;
+            user.lastName = req.body.lastName;
+            user.role = req.body.role;
+            user.save().then(updatedUser => {
+                res.json('Update done', updatedUser);
+            }).catch(err => {
+                res.status(400).send('Update failed');
+            });
+        };
+    });
 });
 
 router.route('/login').post((req, res) => {
