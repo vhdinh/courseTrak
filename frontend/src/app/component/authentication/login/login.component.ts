@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       password: password
     };
     this.authService.login(data).subscribe((data) => {
-      if (data.alert) {
+      if (!data) {
         this.snackBar.open('Log in failed', 'OK', {
           duration: 3000,
         });

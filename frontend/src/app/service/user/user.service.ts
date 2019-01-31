@@ -6,6 +6,8 @@ import {HttpClient} from '@angular/common/http';
 })
 export class UserService {
 
+  uri = 'http://localhost:4000';
+
   constructor(
     private http: HttpClient
   ) { }
