@@ -25,9 +25,12 @@ export class CourseListComponent implements OnInit {
   fetchCourses() {
     this.courseService.getCourses()
       .subscribe((data: Course[]) => {
-      console.log('DATA', data);
       this.courses = data;
       })
+  }
+
+  addCourse() {
+    this.router.navigate([`course/add`]);
   }
 
   viewCourse(id) {

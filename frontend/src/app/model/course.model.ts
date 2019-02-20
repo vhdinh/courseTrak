@@ -4,6 +4,6 @@ export interface Course {
   description: String;
   professor: String;
   seat: Number;
-  student: [String];
-  status: String
+  student?: [String];
+  status?: String
 }
