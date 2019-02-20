@@ -7,7 +7,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {CourseService} from '../../../service/course/course.service';
 import {MockCourse} from '../../../service/course/mockCourse';
 
-fdescribe('CourseListComponent', () => {
+describe('CourseListComponent', () => {
   let component: CourseListComponent;
   let fixture: ComponentFixture<CourseListComponent>;
   let service: CourseService;
@@ -53,7 +53,13 @@ fdescribe('CourseListComponent', () => {
     expect(table.rows.length).toEqual(1);
   });
   it('should render table with data', async() => {
-    service.addCourse();
+    await service.addCourse(
+      'Testing Course',
+      'Testing Course Description',
+      'Vu Dinh',
+      25,
+      ['Testing1'],
+      'Open');
     await component.fetchCourses();
     const table = fixture.debugElement.nativeElement.querySelector('table');
     fixture.detectChanges();
