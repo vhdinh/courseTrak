@@ -12,6 +12,12 @@ export class UserService {
     private http: HttpClient
   ) { }
 
+
+  addUser(data) {
+    return this.http.post(`${this.uri}/user/add`, data);
+  }
+
+
   updateUser(id, password, firstName, lastName, role) {
     const user = {
       password: password,

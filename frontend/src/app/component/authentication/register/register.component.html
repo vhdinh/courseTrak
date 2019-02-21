@@ -20,7 +20,7 @@
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button type="submit" (click)="register(firstName.value, lastName.value, email.value, password.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Register</button>
+    <button type="submit" (click)="register()" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Register</button>
     <a class="cancelLink" routerLink="/login">Cancel</a>
   </mat-card-actions>
 </mat-card>

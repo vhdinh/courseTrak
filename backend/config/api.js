@@ -93,13 +93,13 @@ router.route('/user').get((req, res) => {
 
 // User add
 router.route('/user/add').post((req, res) => {
-    exist = User.findOne({email: req.body.email}, function(err, user){
+    User.findOne({email: req.body.email}, function(err, user){
         if(err){
             return console.log(err)
         }
         else{
             if(user){
-                return res.json({'alert': 'Username already in the system'})
+                return res.json({'alert': 'Email already in the system'})
             }
             else{
                 var new_user = new User({
@@ -107,7 +107,7 @@ router.route('/user/add').post((req, res) => {
                     password: req.body.password,
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
-                    role: []
+                    role: ['Admin', 'Professor', 'Student']
                 })
                 new_user.save().then(user => {
                         res.status(200).json({'user': 'Added successfully'});
@@ -116,7 +116,7 @@ router.route('/user/add').post((req, res) => {
                     });
             }
         }
-    })
+    });
 });
 
 // User update

@@ -52,9 +52,15 @@ export class LoginComponent implements OnInit {
       email: this.createForm.value.email,
       password: this.createForm.value.password
     };
-    this.authService.login(data).subscribe((data) => {
-      console.log('DATA', data);
-      this.router.navigate(['course/list']);
+    this.authService.login(data).subscribe((data: any) => {
+      console.log('login', data);
+      if (data && data.alert) {
+        this.snackBar.open(`${data.alert}`, 'OK', {
+          duration: 3000,
+        });
+      } else {
+        this.router.navigate(['course/list']);
+      }
     }, (error) => {
       this.snackBar.open('Log in failed', 'OK', {
         duration: 3000,
