@@ -12,11 +12,9 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-
-  addUser(data) {
-    return this.http.post(`${this.uri}/user/add`, data);
+  addUser(user) {
+    return this.http.post(`${this.uri}/user/add`, user);
   }
-
 
   updateUser(id, password, firstName, lastName, role) {
     const user = {
@@ -30,6 +28,10 @@ export class UserService {
 
   getUsers() {
     return this.http.get(`${this.uri}/user`);
+  }
+
+  deleteUser(id) {
+    return this.http.get(`${this.uri}/user/delete/${id}`);
   }
 
 }

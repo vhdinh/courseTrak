@@ -138,6 +138,17 @@ router.route('/user/update/:id').put((req, res) => {
     });
 });
 
+// User delete
+router.route('/user/delete/:id').get((req, res) => {
+    User.findByIdAndRemove({_id: req.params.id}, (err, user) => {
+    if (err)
+        res.json(err);
+    else
+        res.json('Removed successfully');
+    });
+});
+
+
 router.route('/login').post((req, res) => {
     User.find({email: req.body.email}, function(err, result){
         if(result[0] === undefined || result[0].length == 0 || result[0].email === undefined){
