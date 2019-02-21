@@ -26,6 +26,7 @@ import { RegisterComponent } from './component/authentication/register/register.
 import { CourseAddComponent } from './component/course/course-add/course-add.component';
 import { CourseDetailComponent } from './component/course/course-detail/course-detail.component';
 import {AuthenticationService} from './service/authentication/authentication.service';
+import { UserListComponent } from './component/user/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {AuthenticationService} from './service/authentication/authentication.ser
     LoginComponent,
     RegisterComponent,
     CourseAddComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

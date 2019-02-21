@@ -30,21 +30,40 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(email: string, password: string) {
+  // login() {
+  //   let data = {
+  //     email: this.createForm.value.email,
+  //     password: this.createForm.value.password
+  //   };
+  //   this.authService.login(data).subscribe((data) => {
+  //     if (!data) {
+  //       this.snackBar.open('Log in failed', 'OK', {
+  //         duration: 3000,
+  //       });
+  //     } else {
+  //       console.log('LOGGED IN', data);
+  //
+  //     }
+  //   })
+  // }
+
+  login() {
     let data = {
-      email: email,
-      password: password
+      email: this.createForm.value.email,
+      password: this.createForm.value.password
     };
     this.authService.login(data).subscribe((data) => {
-      if (!data) {
-        this.snackBar.open('Log in failed', 'OK', {
-          duration: 3000,
-        });
-      } else {
-        console.log('LOGGED IN', data);
-
-      }
+      console.log('DATA', data);
+      this.router.navigate(['course/list']);
+    }, (error) => {
+      this.snackBar.open('Log in failed', 'OK', {
+        duration: 3000,
+      });
     })
+  }
+
+  register() {
+    this.router.navigate([`register`]);
   }
 
 }

@@ -5,6 +5,8 @@
 /tmp
 /out-tsc
 
+# secrets
+
 # dependencies
 /node_modules
 
