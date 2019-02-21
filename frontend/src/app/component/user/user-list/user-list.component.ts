@@ -24,13 +24,11 @@ export class UserListComponent implements OnInit {
 
   fetchUsers() {
     this.userService.getUsers().subscribe((data: User[]) => {
-      console.log('USERS', data);
       this.users = data;
     })
   }
 
   deleteUser(id) {
-    console.log('WANT TO DELETE USER', id);
     this.userService.deleteUser(id).subscribe(() => {
       this.fetchUsers();
     })

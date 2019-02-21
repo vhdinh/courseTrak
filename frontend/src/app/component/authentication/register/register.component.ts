@@ -39,7 +39,6 @@ export class RegisterComponent implements OnInit {
       password: this.createForm.value.password
     };
     this.userService.addUser(data).subscribe((data: any) => {
-      console.log('DATA', data);
       if (data && data.alert) {
         this.snackBar.open(`${data.alert}`, 'OK', {
           duration: 3000,
