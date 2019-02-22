@@ -59,6 +59,8 @@ export class LoginComponent implements OnInit {
           duration: 3000,
         });
       } else {
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('currentUser', JSON.stringify(data.signed_user));
         this.router.navigate(['course/list']);
       }
     }, (error) => {
@@ -67,6 +69,7 @@ export class LoginComponent implements OnInit {
       });
     })
   }
+
 
   register() {
     this.router.navigate([`register`]);

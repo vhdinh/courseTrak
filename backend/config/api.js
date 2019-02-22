@@ -1,9 +1,13 @@
 import express from 'express';
 const router = express.Router();
 import mongoose from 'mongoose';
+import jwt from 'jsonwebtoken'
 import Course from '../models/Course';
 import User from '../models/User';
 import bcrypt from 'bcrypt';
+import jwtSecret from '../secrets/jwt';
+
+const JWT_Secret = jwtSecret;
 
 const port = 4000;
 
@@ -150,18 +154,23 @@ router.route('/user/delete/:id').get((req, res) => {
 
 
 router.route('/login').post((req, res) => {
-    User.find({email: req.body.email}, function(err, result){
-        if(result[0] === undefined || result[0].length == 0 || result[0].email === undefined){
-            console.log("LOGIN RESULT - ", result[0])
+    User.find({email: req.body.email}, function(err, user){
+        if(user[0] === undefined || user[0].length == 0 || user[0].email === undefined){
+            console.log("LOGIN RESULT - ", user[0])
             res.json({'alert': "Unable to find email"});
         }
         else{
-            bcrypt.compare(req.body.password, result[0].password, function(err, isMatch){
+            bcrypt.compare(req.body.password, user[0].password, function(err, isMatch){
                 if(isMatch == false){
                     res.json({'alert': 'Incorrect password'})
                 }
                 else{
-                    res.json(result)
+                    var token = jwt.sign(user[0].toJSON(), jwtSecret);
+                    // res.json(user)
+                    res.status(200).send({
+                        signed_user: user[0].toJSON(),
+                        token: token
+                    })
                 }
             })
         }

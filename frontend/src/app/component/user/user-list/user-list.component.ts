@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../../service/user/user.service';
 import {Router} from '@angular/router';
 import {User} from '../../../model/user.model';
+import {AuthenticationService} from '../../../service/authentication/authentication.service';
 
 @Component({
   selector: 'app-user-list',
@@ -15,6 +16,7 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private authService: AuthenticationService,
     private router: Router
   ) { }
 
@@ -23,6 +25,8 @@ export class UserListComponent implements OnInit {
   }
 
   fetchUsers() {
+    console.log('LIST OF USER', this.authService.isLoggedIn());
+
     this.userService.getUsers().subscribe((data: User[]) => {
       this.users = data;
     })
