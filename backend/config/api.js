@@ -114,7 +114,12 @@ router.route('/user/add').post((req, res) => {
                     role: ['Admin', 'Professor', 'Student']
                 })
                 new_user.save().then(user => {
-                        res.status(200).json({'user': 'Added successfully'});
+                    // res.status(200).json({'user': 'Added successfully'});
+                    var token = jwt.sign(user.toJSON(), jwtSecret);
+                    res.status(200).send({
+                        signed_user: user.toJSON(),
+                        token: token
+                    })
                     }).catch(err => {
                         res.status(400).send('Failed to create new user');
                     });
@@ -166,7 +171,6 @@ router.route('/login').post((req, res) => {
                 }
                 else{
                     var token = jwt.sign(user[0].toJSON(), jwtSecret);
-                    // res.json(user)
                     res.status(200).send({
                         signed_user: user[0].toJSON(),
                         token: token

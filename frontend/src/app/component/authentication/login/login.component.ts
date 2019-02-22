@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
         });
       } else {
         localStorage.setItem('token', data.token);
-        localStorage.setItem('currentUser', JSON.stringify(data.signed_user));
+        // localStorage.setItem('currentUser', JSON.stringify(data.signed_user));
         this.router.navigate(['course/list']);
       }
     }, (error) => {

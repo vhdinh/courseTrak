@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../service/user/user.service';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
+import {tap} from 'rxjs/internal/operators';
+import {AuthenticationService} from '../../../service/authentication/authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +20,8 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthenticationService
   ) {
     this.createForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -44,6 +47,7 @@ export class RegisterComponent implements OnInit {
           duration: 3000,
         });
       } else {
+        localStorage.setItem('token', data.token);
         this.router.navigate(['user/list']);
       }
     }, (error) => {
