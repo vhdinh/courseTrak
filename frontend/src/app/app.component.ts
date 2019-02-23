@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {AuthenticationService} from './service/authentication/authentication.service';
 import {Router} from '@angular/router';
+import {Subscription} from 'rxjs/index';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +9,17 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frontend';
-  loggedIn: boolean;
+  currentUser: User;
+  currentUserSubscription: Subscription;
 
   constructor(
     private authService: AuthenticationService,
     private router: Router
-  ) {}
-
-  getMenu() {
-    this.loggedIn = this.authService.isLoggedIn();
+  ) {
+    this.currentUserSubscription = this.authService.currentUser.subscribe(user => {
+      console.log('SUBSCRIPTION CHANGED', user);
+      this.currentUser = user;
+    })
   }
 
   login() {
@@ -26,5 +28,12 @@ export class AppComponent {
 
   logout() {
     this.authService.logout();
+    this.router.navigate(['login']);
   }
+
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.currentUserSubscription.unsubscribe();
+  }
+
 }

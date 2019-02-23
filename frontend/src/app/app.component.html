@@ -1,15 +1,15 @@
 <mat-toolbar>
   <div>CourseTrak</div>
   <div>
-    <button id="matMenu" mat-icon-button (click)="getMenu()" [matMenuTriggerFor]="menu">
+    <button id="matMenu" mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>more_vert</mat-icon>
   </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item *ngIf="!loggedIn" (click)="login()">
+      <button mat-menu-item *ngIf="!currentUser" (click)="login()">
         <mat-icon>fingerprint</mat-icon>
         <span>Login / Register</span>
       </button>
-      <button mat-menu-item *ngIf="loggedIn" (click)="logout()">
+      <button mat-menu-item *ngIf="currentUser" (click)="logout()">
         <mat-icon>fingerprint</mat-icon>
         <span>Logout</span>
       </button>

@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {
     this.createForm = this.fb.group({
-
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.min(4) ]]
     })
@@ -59,8 +58,6 @@ export class LoginComponent implements OnInit {
           duration: 3000,
         });
       } else {
-        localStorage.setItem('token', data.token);
-        // localStorage.setItem('currentUser', JSON.stringify(data.signed_user));
         this.router.navigate(['course/list']);
       }
     }, (error) => {

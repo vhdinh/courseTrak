@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CourseService} from '../../../service/course/course.service';
 import {Router} from '@angular/router';
 import {Course} from '../../../model/course.model';
+import {AuthenticationService} from '../../../service/authentication/authentication.service';
 
 @Component({
   selector: 'app-course-list',
@@ -12,10 +13,12 @@ export class CourseListComponent implements OnInit {
 
   courses: Course[];
   displayedColumns = ['title', 'description','professor', 'seats', 'status', 'actions'];
+  loggedIn: boolean;
 
   constructor(
     private courseService: CourseService,
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService
   ) { }
 
   ngOnInit() {
@@ -26,7 +29,8 @@ export class CourseListComponent implements OnInit {
     this.courseService.getCourses()
       .subscribe((data: Course[]) => {
       this.courses = data;
-      })
+      });
+    this.loggedIn = this.authService.isLoggedIn();
   }
 
   addCourse() {

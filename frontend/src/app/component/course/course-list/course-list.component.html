@@ -1,7 +1,7 @@
 <div>
   <br>
   <mat-card>
-    <button id="newCourseBtn" mat-raised-button color="primary" (click)="addCourse()">Add New Course</button>
+    <button *ngIf="loggedIn" id="newCourseBtn" mat-raised-button color="primary" (click)="addCourse()">Add New Course</button>
     <br><br>
     <mat-divider></mat-divider>
     <br>
@@ -29,8 +29,8 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef class="mat-column-right"> Actions </th>
         <td mat-cell *matCellDef="let element" class="mat-column-right">
-          <button mat-button color="primary" (click)="editCourse(element._id)">Edit</button>
-          <button mat-button color="warn" (click)="deleteCourse(element._id)">Delete</button>
+          <button mat-button color="primary" *ngIf="loggedIn" (click)="editCourse(element._id)">Edit</button>
+          <button mat-button color="warn" *ngIf="loggedIn" (click)="deleteCourse(element._id)">Delete</button>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
