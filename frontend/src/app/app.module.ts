@@ -27,6 +27,7 @@ import { CourseAddComponent } from './component/course/course-add/course-add.com
 import { CourseDetailComponent } from './component/course/course-detail/course-detail.component';
 import {AuthenticationService} from './service/authentication/authentication.service';
 import { UserListComponent } from './component/user/user-list/user-list.component';
+import {UserEditComponent} from './component/user/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { UserListComponent } from './component/user/user-list/user-list.componen
     RegisterComponent,
     CourseAddComponent,
     CourseDetailComponent,
-    UserListComponent
+    UserListComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,

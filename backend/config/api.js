@@ -95,6 +95,18 @@ router.route('/user').get((req, res) => {
     });
 });
 
+// User get ID
+router.route('/user/:id').get((req, res) => {
+    User.findById(req.params.id, (err, user) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(user);
+        }
+    });
+});
+
+
 // User add
 router.route('/user/add').post((req, res) => {
     User.findOne({email: req.body.email}, function(err, user){

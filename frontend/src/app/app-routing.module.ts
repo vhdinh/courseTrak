@@ -7,6 +7,7 @@ import {RegisterComponent} from './component/authentication/register/register.co
 import {CourseAddComponent} from './component/course/course-add/course-add.component';
 import {CourseDetailComponent} from './component/course/course-detail/course-detail.component';
 import {UserListComponent} from './component/user/user-list/user-list.component';
+import {UserEditComponent} from './component/user/user-edit/user-edit.component';
 
 const routes: Routes = [
   // AUTHENTICATION
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   // USER
   { path: 'user/list', component: UserListComponent },
+  { path: 'user/edit/:id', component: UserEditComponent },
   // COURSE
   { path: 'course/list', component: CourseListComponent },
   { path: 'course/add', component: CourseAddComponent },

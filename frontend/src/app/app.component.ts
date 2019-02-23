@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {AuthenticationService} from './service/authentication/authentication.service';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs/index';
+import {User} from './model/user.model';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,6 @@ export class AppComponent {
     private router: Router
   ) {
     this.currentUserSubscription = this.authService.currentUser.subscribe(user => {
-      console.log('SUBSCRIPTION CHANGED', user);
       this.currentUser = user;
     })
   }

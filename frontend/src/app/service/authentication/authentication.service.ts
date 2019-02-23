@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable, Subject} from 'rxjs/index';
 import { map } from 'rxjs/operators';
+import {User} from '../../model/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class AuthenticationService {
         this.currentUserSubject.next(user.signed_user)
       };
       return user;
-    });
+    }));
   }
 
   public get currentUserValue() {

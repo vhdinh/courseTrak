@@ -26,6 +26,10 @@ export class UserService {
     return this.http.put(`${this.uri}/user/update/${id}`, user);
   }
 
+  getUserById(id) {
+    return this.http.get(`${this.uri}/user/${id}`);
+  }
+
   getUsers() {
     return this.http.get(`${this.uri}/user`);
   }
